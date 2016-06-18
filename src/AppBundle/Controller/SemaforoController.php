@@ -30,6 +30,7 @@ class SemaforoController extends Controller
      */
     public function indexAction()
     {
+        $this->cargarSemaforos();
         $em = $this->getDoctrine()->getManager();
 
         $semaforos = $em->getRepository('AppBundle:Semaforo')->findAll();
@@ -37,6 +38,28 @@ class SemaforoController extends Controller
         return $this->render('semaforo/index.html.twig', array(
             'semaforos' => $semaforos,
         ));
+    }
+       private function cargarSemaforos(){
+             $repositorio = $this->getDoctrine()
+            ->getRepository('AppBundle:Semaforo');
+            $semaforo=$repositorio->findAll();
+            if(empty($semaforo)){
+                 $em = $this->getDoctrine()->getManager();
+           
+                for ($i=1; $i < 100; $i++) { 
+                    $avenida=100-$i;
+                    $em->persist($this->crearSemaforo($i,$avenida));
+                    $em->flush();
+                    
+                }
+            }
+
+    }
+    private function crearSemaforo($callePrimaria,$setCalleSecundaria){
+         $semaforo = new Semaforo();
+         $semaforo->setCallePrimaria($callePrimaria);
+         $semaforo->setCalleSecundaria($setCalleSecundaria);
+         return $semaforo;
     }
 
     /**

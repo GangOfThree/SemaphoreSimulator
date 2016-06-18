@@ -10,4 +10,6 @@ namespace AppBundle\Repository;
  */
 class SemaforoRepository extends \Doctrine\ORM\EntityRepository
 {
+	
+	
 }
