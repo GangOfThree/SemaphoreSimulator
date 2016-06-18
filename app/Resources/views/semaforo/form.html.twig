@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if edit is not defined or not edit %}
+        <h1>Nuevo Semáforo</h1>
+    {% else %}
+        <h1>Editar Semáforo</h1>
+    {% endif %}
+
+    {{ form_start(form) }}
+        {# {{ form_widget(form) }} #}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form_label(form.callePrimaria) }}
+                {{ form_errors(form.callePrimaria) }}
+                {{ form_widget(form.callePrimaria) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form_label(form.calleSecundaria) }}
+                {{ form_errors(form.calleSecundaria) }}
+                {{ form_widget(form.calleSecundaria) }}
+            </div>
+        </div>
+
+        <div class="center-align">
+            <input class="btn waves-effect waves-light" type="submit" value="Registrar" />
+        </div>
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('semaforo_index') }}">Volver al listado</a>
+        </li>
+    </ul>
+{% endblock %}

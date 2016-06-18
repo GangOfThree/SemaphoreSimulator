@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Semáforos Registrados</h1>
+
+    <table class="highlight responsive-table">
+        <thead>
+            <tr>
+                <th>Calle Primaria</th>
+                <th>Calle Secundaria</th>
+                <th>Autos Por Minuto</th>
+                <th>Frecuencia</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for semaforo in semaforos %}
+            <tr>
+                <td>{{ semaforo.callePrimaria }}</td>
+                <td>{{ semaforo.calleSecundaria }}</td>
+                <td>{{ semaforo.autosPorMinuto }}</td>
+                <td>{{ semaforo.frecuencia }}</td>
+                <td>
+                    <a href="{{ path('semaforo_show', { 'id': semaforo.id }) }}">Ver</a>
+                    <a href="{{ path('semaforo_edit', { 'id': semaforo.id }) }}">Editar</a>
+                    <a href="{{ path('semaforo_delete', { 'id': semaforo.id }) }}">Eliminar</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('semaforo_new') }}">Nuevo Semáforo...</a>
+        </li>
+    </ul>
+{% endblock %}

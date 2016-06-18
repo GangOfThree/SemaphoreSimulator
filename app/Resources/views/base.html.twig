@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Semaphore Simulator{% endblock %}</title>
+        
+        {% block stylesheets %}
+            <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="{{ asset('lib/materialize/css/materialize.min.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/base.css')}}">
+        {% endblock %}
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <header>
+{#         <div class="fixed-action-btn" style="right:initial; bottom:initial; padding-top:0px; padding-left:10px;">
+            <a id="menu" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">menu</i></a>
+        </div> #}
+    </header>
+    <body>
+
+        <div class="side-panel">
+            <div class="logo"></div>
+        </div>
+
+        <main>
+            <div class="card-panel">
+                {% block body %}{% endblock %}
+            </div>
+        </main>   
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('lib/materialize/js/materialize.min.js') }}"></script>
+            <script>
+                // $('.button-collapse').sideNav({
+                //       menuWidth: 300, // Default is 240
+                //       closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                //     }
+                // );
+                // $('.collapsible').collapsible();
+            </script>
+        {% endblock %}
+    </body>
+</html>

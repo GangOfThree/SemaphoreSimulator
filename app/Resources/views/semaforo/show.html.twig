@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Semaforo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Autosporminuto</th>
+                <td>{{ semaforo.autosPorMinuto }}</td>
+            </tr>
+            <tr>
+                <th>Frecuencia</th>
+                <td>{{ semaforo.frecuencia }}</td>
+            </tr>
+            <tr>
+                <th>Calleprimaria</th>
+                <td>{{ semaforo.callePrimaria }}</td>
+            </tr>
+            <tr>
+                <th>Callesecundaria</th>
+                <td>{{ semaforo.calleSecundaria }}</td>
+            </tr>
+            <tr>
+                <th>URL</th>
+                <td>{{ semaforo.getUrl() }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('semaforo_index') }}">Volver al listado</a>
+        </li>
+        <li>
+            <a href="{{ path('semaforo_edit', { 'id': semaforo.id }) }}">Editar</a>
+        </li>
+        <li>
+            <a href="{{ path('semaforo_delete', { 'id': semaforo.id }) }}">Eliminar</a>
+        </li>
+    </ul>
+{% endblock %}
