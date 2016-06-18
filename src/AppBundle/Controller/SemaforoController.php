@@ -31,6 +31,7 @@ class SemaforoController extends Controller
     public function indexAction()
     {
         $this->cargarSemaforos();
+        $this->actualizar();
         $em = $this->getDoctrine()->getManager();
 
         $semaforos = $em->getRepository('AppBundle:Semaforo')->findAll();
@@ -60,6 +61,19 @@ class SemaforoController extends Controller
          $semaforo->setCallePrimaria($callePrimaria);
          $semaforo->setCalleSecundaria($setCalleSecundaria);
          return $semaforo;
+    }
+    private function actualizar(){
+        $repositorio = $this->getDoctrine()->getRepository('AppBundle:Semaforo');
+        $semaforos=$repositorio->findAll();
+        $em = $this->getDoctrine()->getManager();
+        foreach ($semaforos as $semaforo => $value) {
+                $autosPorMinuto=rand(1,20);
+                $frecuencia=rand(0,$autosPorMinuto);
+                $value->setAutosPorMinuto($autosPorMinuto);    
+                $value->setFrecuencia($frecuencia);
+                $em->persist($value);
+                $em->flush();        
+        }
     }
 
     /**
