@@ -1,39 +1,55 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <script type="text/javascript" src="{{ asset('lib/DataTables/js/jquery.dataTables.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/tables.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/tables.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     <h1>Semáforos Registrados</h1>
 
-    <table class="highlight responsive-table">
-        <thead>
-            <tr>
-                <th>Calle Primaria</th>
-                <th>Calle Secundaria</th>
-                <th>Autos Por Minuto</th>
-                <th>Frecuencia</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for semaforo in semaforos %}
-            <tr>
-                <td>{{ semaforo.callePrimaria }}</td>
-                <td>{{ semaforo.calleSecundaria }}</td>
-                <td>{{ semaforo.autosPorMinuto }}</td>
-                <td>{{ semaforo.frecuencia }}</td>
-                <td>
-                    <a href="{{ path('semaforo_show', { 'id': semaforo.id }) }}">Ver</a>
-                    <a href="{{ path('semaforo_edit', { 'id': semaforo.id }) }}">Editar</a>
-                    <a href="{{ path('semaforo_delete', { 'id': semaforo.id }) }}">Eliminar</a>
+    <div class="row">
+        <div id="admin" class="col s12">
+            <div class="material-table">
+                <div class="table-header">
+                    <span class="table-title">Datos</span>
+                    <div class="actions">
+                        <a href="{{ path('semaforo_new') }}" class="modal-trigger waves-effect btn-flat nopadding"><i class="material-icons">add</i></a>
+                        <a href="javascript:void(0)" class="search-toggle waves-effect btn-flat nopadding"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <table id="datatable">
+                    <thead>
+                        <tr>
+                            <th>Calle Primaria</th>
+                            <th>Calle Secundaria</th>
+                            <th>Autos Por Minuto</th>
+                            <th>Frecuencia</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for semaforo in semaforos %}
+                        <tr>
+                            <td>{{ semaforo.callePrimaria }}</td>
+                            <td>{{ semaforo.calleSecundaria }}</td>
+                            <td>{{ semaforo.autosPorMinuto }}</td>
+                            <td>{{ semaforo.frecuencia }}</td>
+                            <td>
+                                <a href="{{ path('semaforo_show', { 'id': semaforo.id }) }}">Ver</a>
+                                <a href="{{ path('semaforo_edit', { 'id': semaforo.id }) }}">Editar</a>
+                                <a href="{{ path('semaforo_delete', { 'id': semaforo.id }) }}">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('semaforo_new') }}">Nuevo Semáforo...</a>
-        </li>
-    </ul>
 {% endblock %}
