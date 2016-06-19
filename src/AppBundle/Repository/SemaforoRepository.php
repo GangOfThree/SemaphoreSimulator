@@ -9,7 +9,5 @@ namespace AppBundle\Repository;
  * repository methods below.
  */
 class SemaforoRepository extends \Doctrine\ORM\EntityRepository
-{
-	
-	
+{	
 }

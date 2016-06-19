@@ -40,7 +40,8 @@ class SemaforoController extends Controller
             'semaforos' => $semaforos,
         ));
     }
-       private function cargarSemaforos(){
+    
+    private function cargarSemaforos(){
              $repositorio = $this->getDoctrine()
             ->getRepository('AppBundle:Semaforo');
             $semaforo=$repositorio->findAll();
@@ -56,12 +57,14 @@ class SemaforoController extends Controller
             }
 
     }
+
     private function crearSemaforo($callePrimaria,$setCalleSecundaria){
          $semaforo = new Semaforo();
          $semaforo->setCallePrimaria($callePrimaria);
          $semaforo->setCalleSecundaria($setCalleSecundaria);
          return $semaforo;
     }
+    
     private function actualizar(){
         $repositorio = $this->getDoctrine()->getRepository('AppBundle:Semaforo');
         $semaforos=$repositorio->findAll();
