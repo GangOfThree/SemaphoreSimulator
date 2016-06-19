@@ -2,13 +2,15 @@
 
 {% block stylesheets %}
     <meta http-equiv="Refresh" content="20"/>
-    <script type="text/javascript" src="{{ asset('lib/DataTables/js/jquery.dataTables.min.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/tables.css') }}">
+    <meta http-equiv="Refresh" content="20"/>
 {% endblock %}
 
 {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('lib/DataTables/js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/tables.js') }}"></script>
 {% endblock %}
+
 
 {% block body %}
     <h1>Semáforos Registrados</h1>
@@ -52,5 +54,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
