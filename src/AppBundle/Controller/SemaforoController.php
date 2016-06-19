@@ -121,6 +121,7 @@ class SemaforoController extends Controller
      * @Route("/{id}/edit", name="semaforo_edit")
      * @Method({"GET", "POST"})
      */
+    
     public function editAction(Request $request, Semaforo $semaforo)
     {
         $editForm = $this->createForm('AppBundle\Form\SemaforoType', $semaforo);
@@ -200,6 +201,18 @@ class SemaforoController extends Controller
         $serializer = new Serializer($normalizers, $encoders);
 
         return $serializer->serialize($semaforos, 'json');
+    }
+
+
+     /**
+     * Return a map view.
+     *
+     * @Route("/map", name="map_view")
+     * @Method({"GET"})
+     */
+     public function showMapAction()
+    {
+        return $this->render('semaforo/mapa.html.twig');
     }
 
 }
