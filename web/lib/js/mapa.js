@@ -1,19 +1,17 @@
 //key= AIzaSyDG94jyox5HGY9k-ajWQdzJsePe81moRhY
-window.onload = function() {
-  initialize();
-
+function mostrar(semaforos){
+ 
+ alert(semaforos.callePrimaria);
   
-  getCoordinate();
-
 };
-function getCoordinate(){
+function getCoordinate(calle,avenida){
     var coordinate= {lat: "", lng: ""};
-    var query="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address= calle 7 y calle 32, La Plata";
+    var query="http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address= calle "+calle+" y calle "+avenida+", La Plata";
     $.getJSON( query, function( data ) {
         coordinate.lng=data.results[0].geometry.location.lng;
         coordinate.lat=data.results[0].geometry.location.lat;
        
-        alert(coordinate.lng);
+        
         addMarker(coordinate);
         
     });
@@ -47,7 +45,7 @@ function addMarker(coordinate){
  // y configuramos las opciones del maps 
      var myOptions = {
           center: latlng,
-          zoom: 12,
+          zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
      // Decimos donde vamos a colocar el maps

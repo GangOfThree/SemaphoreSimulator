@@ -48,8 +48,8 @@ class SemaforoController extends Controller
             if(empty($semaforo)){
                  $em = $this->getDoctrine()->getManager();
            
-                for ($i=1; $i < 100; $i++) { 
-                    $avenida=100-$i;
+                for ($i=1; $i < 32; $i+=2) { 
+                    $avenida=72-$i;
                     $em->persist($this->crearSemaforo($i,$avenida));
                     $em->flush();
                     
@@ -192,7 +192,7 @@ class SemaforoController extends Controller
         $normalizer= new ObjectNormalizer();
 
         if($hideFields){
-            $normalizer->setIgnoredAttributes(array('id','autosPorMinuto','frecuencia'));
+            $normalizer->setIgnoredAttributes(array('id','autosPorMinuto'));
         }
         else{
             $normalizer->setIgnoredAttributes(array('id'));   
@@ -215,7 +215,13 @@ class SemaforoController extends Controller
      */
      public function showMapAction()
     {
-        return $this->render('semaforo/mapa.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $semaforos = $em->getRepository('AppBundle:Semaforo')->findAll();
+        $sem=$this->jsonSerialize($semaforos[1],false);
+        return $this->render('semaforo/mapa.html.twig', array(
+            'semaforos' => $sem,
+        ));
+       
     }
 
 }
