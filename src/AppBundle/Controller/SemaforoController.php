@@ -224,4 +224,20 @@ class SemaforoController extends Controller
        
     }
 
+    /**
+    * Retorna un listado de las calles mas transitadas
+    *
+    * @Route("/calles", name="calles_view")
+    * @Method({"GET"})
+    */
+    public function callesTransitadasAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT s.callePrimaria, AVG(s.autosPorMinuto) as promedio FROM AppBundle:Semaforo s group by s.callePrimaria order by promedio desc");
+        $promedios= $query->getResult();
+
+        return $this->render('semaforo/calles.html.twig', array(
+            'promedios' => $promedios
+        ));
+    }
 }
