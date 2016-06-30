@@ -21,9 +21,16 @@
 
     <body>
 
-        <div class="side-panel">
-            <div class="logo"></div>
-        </div>
+        <ul class="side-nav fixed">
+            <li class="logo"><img src="{{ asset('img/logo2.png') }}" class="responsive-img"></li>
+            {% if running is not defined %}
+                <li class="teal"><a href="{{ path('semaforo_index') }}">Iniciar Simulación</a></li>
+            {% else %}
+                <li class="red lighten-2"><a href="{{ path('homepage') }}">Detener Simulación</a></li>
+            {% endif %}
+            <li><a href="{{ path('semaforo_new') }}">Crear Semaforo</a></li>
+            <li><a href="{{ path('semaforo_list_JSON') }}">JSON Semaforos</a></li>
+        </ul>
 
         <main>
             <div class="card-panel">

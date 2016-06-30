@@ -38,6 +38,7 @@ class SemaforoController extends Controller
 
         return $this->render('semaforo/index.html.twig', array(
             'semaforos' => $semaforos,
+            'running' => true
         ));
     }
     
