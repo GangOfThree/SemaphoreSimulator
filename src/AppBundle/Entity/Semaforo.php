@@ -169,7 +169,7 @@ class Semaforo
      */
     public function getUrl()
     {
-        $baseURL="http://localhost/SemaphoreSimulator/web/app_dev.php/semaforo/json/";
+        $baseURL="http://localhost/SemaphoreSimulator/web/semaforo/json/";
         return $baseURL.$this->id;
     }
 
