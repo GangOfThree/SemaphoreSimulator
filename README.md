@@ -1,9 +1,7 @@
 SemaphoreSimulator
 ==================
 
-A Symfony project created on June 15, 2016, 1:33 pm.
-
-este sistema simula a los sensores que estarian instalados en los semaforos, que proveeran datos a travez de json para luego 
+Este sistema simula a los sensores que estarian instalados en los semaforos, que proveeran datos a traves de json para luego 
 ser consumidos por el sistema "etraffic".
 
 crear un usuario para la base de datos llamado=etraffic , contraseña: root
