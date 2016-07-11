@@ -1,4 +1,4 @@
-SemaphoreSimulator
+﻿SemaphoreSimulator
 ==================
 
 Este sistema simula a los sensores que estarian instalados en los semaforos, que proveeran datos a traves de json para luego 
@@ -8,7 +8,7 @@ crear un usuario para la base de datos llamado=etraffic , contraseña: root
 
 importar la base de datos simulator.sql que se encuentra en la carpeta testDB
 
-una vez hecho esto, se debe correr el servidor apache (nosotros utilizamos la herramienta xampp)
+una vez hecho esto, se deben correr el servidor apache y mysql (nosotros utilizamos la herramienta xampp)
 
 links:
 
