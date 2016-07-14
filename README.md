@@ -4,7 +4,7 @@
 Este sistema simula a los sensores que estarian instalados en los semaforos, que proveeran datos a traves de json para luego 
 ser consumidos por el sistema "etraffic".
 
-crear un usuario para la base de datos llamado=etraffic@localhost , contraseña: root
+crear un usuario para la base de datos llamado: etraffic, contraseña: root
 
 importar la base de datos simulator.sql que se encuentra en la carpeta testDB
 
